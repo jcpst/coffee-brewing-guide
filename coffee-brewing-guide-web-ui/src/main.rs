@@ -84,8 +84,6 @@ impl Component for Model {
                         </div>
                     </div>
                     <div class="w3-panel">
-                        <p>{"Hello. This is a test."}</p>
-                        <p>{"Hello. This is a test."}</p>
                     </div>
                 </div>
                 <footer class="w3-container w3-bottom w3-theme w3-margin-top">
