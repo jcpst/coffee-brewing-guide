@@ -63,69 +63,91 @@ impl Component for Model {
 
     fn view(&self) -> Html {
         html! {
-            <div class="w3-container">
-
-                <Title>{ "Coffee Brewing Guide" }</Title>
-
-                { self.view_brew_technique_buttons() }
-
-                <div class="w3-panel w3-light-blue w3-round-large">
-                    <div class="w3-row-padding">
-                        <div class="w3-half">
-                            <label>{"Cups"}</label>
-                            <input class="w3-input" type="range" min="1" max="12"
-                                value={self.cups.to_string()}
-                                oninput=self.link.callback(move |val: InputData| {
-                                    Msg::GetCups(val.value.parse::<u16>().unwrap())
-                                })
-                            />
-                            <span>{self.cups}</span>
+            <div>
+                <Title>{ "Coffee Calculator" }</Title>
+                <div class="">
+                    
+                    <BrewTable brew=self.brew></BrewTable> 
+                    <div class="w3-theme-l4">
+                        <div class="w3-cell-row">
+                            <div class="w3-cell w3-padding-small">
+                                {self.selector()}
+                            </div>
                         </div>
-                        <div class="w3-half">
-                            <label>{"Amount per Cup"}</label>
-                            <input class="w3-input" type="number"
-                                value={self.amount_per_cup.to_string()}
-                                oninput=self.link.callback(move |val: InputData| {
-                                    Msg::GetAmountPerCup(val.value.parse::<u16>().unwrap())
-                                })
-                            />
+                        <div class="w3-cell-row w3-padding">
+                            <div class="w3-cell">
+                                {self.cups()}
+                            </div>
+                            <div class="w3-cell">
+                                {self.amount_per_cup()}
+                            </div>
                         </div>
                     </div>
+                    <div class="w3-panel">
+                        <p>{"Hello. This is a test."}</p>
+                        <p>{"Hello. This is a test."}</p>
+                    </div>
                 </div>
-
-                <BrewTable brew=self.brew></BrewTable>
-                
+                <footer class="w3-container w3-bottom w3-theme w3-margin-top">
+                    <p>{"Thank you for visiting!!"}</p>
+                </footer>
             </div>
         }
     }
 }
 
 impl Model {
-    fn view_brew_technique_buttons(&self) -> Html {
+    fn selector(&self) -> Html {
         html! {
-            <div>
-                {self.brew_button(BrewTechnique::PourOver)}
-                {self.brew_button(BrewTechnique::AeroPress)}
-                {self.brew_button(BrewTechnique::FilteredIceCoffee)}
-            </div>
+            <select class="w3-input w3-theme-l4 w3-border-0"
+                onchange=self.link.callback(|event| match event {
+                    ChangeData::Select(elem) => {
+                        let value = elem.selected_index();
+                        Msg::ToggleTechnique(match value {
+                            0 => BrewTechnique::PourOver,
+                            1 => BrewTechnique::AeroPress,
+                            2 => BrewTechnique::FilteredIceCoffee,
+                            _ => unreachable!()
+                        })
+                    }
+                    _ => unreachable!()
+                })>
+                <option>{BrewTechnique::PourOver.to_string()}</option>
+                <option>{BrewTechnique::AeroPress.to_string()}</option>
+                <option>{BrewTechnique::FilteredIceCoffee.to_string()}</option>
+            </select>
         }
     }
 
-    fn brew_button(&self, technique: BrewTechnique) -> Html {
-        let mut classes = String::from("w3-bar-item w3-button");
-
-        if self.brew_technique == technique {
-            classes.push_str(" w3-white w3-border w3-large")
-        } else {
-            classes.push_str(" w3-black")
-        }
-
+    fn cups(&self) -> Html {
         html! {
-            <button class={classes} onclick=self.link.callback(move |_|
-                Msg::ToggleTechnique(technique)
-            )>
-                {technique.to_string()}
-            </button>
+            <>
+                <label class="">{"Cups"}</label>
+                <input class="w3-input" type="range" min="1" max="12"
+                    style="width:12em"
+                    value={self.cups.to_string()}
+                    oninput=self.link.callback(move |val: InputData| {
+                        Msg::GetCups(val.value.parse::<u16>().unwrap())
+                    })
+                />
+                <span class="">{self.cups}</span>
+            </>
+        }
+    }
+
+     fn amount_per_cup(&self) -> Html {
+        html! {
+            <>
+                <label>{"Amount per Cup"}</label>
+                <input class="w3-input" type="range" inputmode="numeric"
+                    min="100" max="400" step="50" style="width:7em;"
+                    value={self.amount_per_cup.to_string()}
+                    oninput=self.link.callback(move |val: InputData| {
+                        Msg::GetAmountPerCup(val.value.parse::<u16>().unwrap())
+                    })
+                />
+                <span>{self.amount_per_cup}</span>
+            </>
         }
     }
 }

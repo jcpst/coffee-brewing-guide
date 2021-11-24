@@ -30,7 +30,9 @@ impl Component for Title {
 
     fn view(&self) -> Html {
         html! {
-            <h1>{ for self.props.children.iter() }</h1>
+            <header class="w3-card w3-bar w3-theme">
+                <h1 class="w3-bar-item">{ for self.props.children.iter() }</h1>
+            </header>
         }
     }
 }

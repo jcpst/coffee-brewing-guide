@@ -16,7 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
+    
+    - name: Build 🏗️
       run: cargo build --verbose
-    - name: Run tests
+    
+    - name: Tests 🧪
       run: cargo test --verbose
+    
+    - name: Deploy to GH Pages 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: dist
