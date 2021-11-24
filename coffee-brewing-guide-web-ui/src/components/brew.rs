@@ -30,7 +30,7 @@ impl Component for BrewTable {
 
     fn view(&self) -> Html {
         html! {
-            <table class="w3-table-all w3-half">
+            <table class="w3-table w3-theme-l3">
                 <tr>
                     <th>{"Water"}</th>
                     <th>{"Beans"}</th>
