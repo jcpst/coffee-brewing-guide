@@ -17,11 +17,13 @@ jobs:
       - uses: jetli/wasm-bindgen-action@v0.1.0
       - uses: actions/checkout@v2
 
-      - working-directory: ./coffee-brewing-guide-web-ui
+      - name: Trunk Build
+        working-directory: ./coffee-brewing-guide-web-ui
         run: trunk build --release
 
-      - uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
