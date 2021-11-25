@@ -5,6 +5,11 @@ on:
     workflows: [ci build]
     types: [completed]
 
+defaults:
+  run:
+    working-directory: ./coffee-brewing-guide-web-ui
+
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -18,7 +23,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Trunk Build
-        working-directory: ./coffee-brewing-guide-web-ui
         run: trunk build --release
 
       - name: Deploy
@@ -26,4 +30,4 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./coffee-brewing-guide-web-ui/dist
+          publish_dir: ./dist
