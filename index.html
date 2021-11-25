@@ -1,19 +1,33 @@
 <!DOCTYPE html><html><head>
     <title>Coffee Brewing Guide</title>
-    <meta charset="utf-8">
+   
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Coffee Brewing Guide</title>
-	<link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">    
+	
+	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+	
+	<link rel="manifest" href="manifest.json">
 	<link rel="icon" href="mug.png" type="image/png">
+	<link rel="apple-touch-icon" href="mug.png" sizes="256x256">
 	
 	
 	
   
-<link rel="preload" href="index-b3333b51beff0923_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="index-b3333b51beff0923.js"></head>
+<link rel="preload" href="index-50a289b02d18aab0_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="index-50a289b02d18aab0.js"></head>
   <body>
 
+  <script type="text/javascript">
+    if (navigator.serviceWorker != null) {
+      navigator.serviceWorker
+		.register('sw.js')
+		.then(registration => {
+          console.log('Registered events at scope: ', registration.scope);
+        });
+    }
+  </script>
 
-<script type="module">import init from './index-b3333b51beff0923.js';init('index-b3333b51beff0923_bg.wasm');</script></body></html>
+
+<script type="module">import init from './index-50a289b02d18aab0.js';init('./index-50a289b02d18aab0_bg.wasm');</script></body></html>
