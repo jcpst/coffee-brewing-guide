@@ -2,10 +2,13 @@
   "name": "Coffee Brewing Guide",
   "short_name": "CBG",
   "display": "standalone",
-  "start_url": "/",
+  "orientation": "portrait",
+  "scope": ".",
+  "start_url": "./",
+  "newBranch":"true",
   "icons": [
     {
-      "src": "mug.png",
+      "src": "assets/mug.png",
       "sizes": "256x256",
       "type": "image/png"
     }
