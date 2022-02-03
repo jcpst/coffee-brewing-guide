@@ -87,7 +87,11 @@ impl Component for Model {
                     </div>
                 </div>
                 <footer class="w3-container w3-bottom w3-theme w3-margin-top">
-                    <p>{"Thank you for visiting!!"}</p>
+                    <p>
+                        <a href="https://github.com/jcpst/coffee-brewing-guide">
+                            {"source code"}
+                        </a>
+                    </p>
                 </footer>
             </div>
         }
