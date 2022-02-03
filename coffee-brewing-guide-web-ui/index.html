@@ -6,19 +6,19 @@
 	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">    
-	
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Example of a wasm-powered pwa deployed through github pages">
 	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
 	
 	<link rel="manifest" href="manifest.json" />
-	<link rel="icon" href="assets/mug.png" type="image/png" />
-	<link rel="apple-touch-icon" href="assets/mug.png" sizes="256x256" />
+	<link rel="icon" href="mug.png" type="image/png" />
+	<link rel="apple-touch-icon" href="mug.png" sizes="256x256" />
 	
 	<link data-trunk rel="copy-file" href="manifest.json" />
 	<link data-trunk rel="copy-file" href="assets/mug.png" />
   </head>
-  <body></body>
-
+  <body>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
       navigator.serviceWorker
@@ -28,5 +28,7 @@
         });
     }
   </script>
+  </body>
+
 </html>
 
