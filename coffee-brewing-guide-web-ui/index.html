@@ -11,10 +11,10 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
 	
 	<link rel="manifest" href="manifest.json" />
-	<link rel="icon" href="mug.png" type="image/png" />
-	<link rel="apple-touch-icon" href="mug.png" sizes="256x256" />
+	<link rel="icon" href="assets/mug.png" type="image/png" />
+	<link rel="apple-touch-icon" href="assets/mug.png" sizes="256x256" />
 	
-	<link data-trunk rel="copy-file" href="assets/manifest.json" />
+	<link data-trunk rel="copy-file" href="manifest.json" />
 	<link data-trunk rel="copy-file" href="assets/mug.png" />
   </head>
   <body></body>
@@ -22,8 +22,8 @@
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
       navigator.serviceWorker
-		.register('sw.js')
-		.then(registration => {
+        .register('sw.js')
+        .then(registration => {
           console.log('Registered events at scope: ', registration.scope);
         });
     }
